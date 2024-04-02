@@ -12,7 +12,7 @@ cloudinary.config({
 
 const uploadOnCloudinary = async (localfilePath) => {
     try{
-        if(!localfilePath) return null
+        if(!localfilePath) return nulls
 
         //upload the file on cloudinary
         const response = await cloudinary.uploader.upload(localfilePath, {
@@ -20,7 +20,8 @@ const uploadOnCloudinary = async (localfilePath) => {
         })
 
         //file has been uploaded successfully
-        console.log("file is uploaded on cloudinary", response.url)
+        //console.log("file is uploaded on cloudinary", response.url)
+        fs.unlinkSync(localfilePath)
         return response
 
     }catch(error){
@@ -29,4 +30,4 @@ const uploadOnCloudinary = async (localfilePath) => {
         
     }
 }
-export {uploadOnCloudinary} 
+export {uploadOnCloudinary}       
